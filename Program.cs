@@ -21,9 +21,9 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/Movies", () =>
 {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
+    var Movies = Enumerable.Range(1, 5).Select(index =>
        new WeatherForecast
        (
            DateTime.Now.AddDays(index),
@@ -31,10 +31,9 @@ app.MapGet("/weatherforecast", () =>
            summaries[Random.Shared.Next(summaries.Length)]
        ))
         .ToArray();
-    return forecast;
+    return Movies;
 })
 .WithName("GetWeatherForecast");
-
 app.Run();
 
 internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
